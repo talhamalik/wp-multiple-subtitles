@@ -232,7 +232,7 @@ function get_the_subtitles( $post = 0, $before = '', $after = '', $echo = true )
     }
 
     if($is_listItem){
-        echo '</ul>';
+        echo '</ul><style>.gi-multiple-subtitles strong{color:white}</style>';
     }
 
 }

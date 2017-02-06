@@ -1,15 +1,15 @@
 <?php
 
-add_shortcode( 'wp_subtitle', array( 'WPSubtitle_Shortcode', 'shortcode' ) );
+add_shortcode( 'wp_subtitle', array( 'WPMultipleSubtitles_Shortcode', 'shortcode' ) );
 
-class WPSubtitle_Shortcode {
+class WPMultipleSubtitles_Shortcode {
 
 	/**
-	 * [wp_subtitle] Shortcode
+	 * [wp_multiple_subtitles] Shortcode
 	 *
-	 * @since  2.5
+	 * @since  0.9
 	 *
-	 * Outputs the post subtitle.
+	 * Outputs the post subtitles.
 	 *
 	 * If the [wp_subtitle] shortcode tag is wrapped around content, that
 	 * content will be used as a fallback if no subtitle is specified.
@@ -55,7 +55,7 @@ class WPSubtitle_Shortcode {
 	/**
 	 * Get Default Tag
 	 *
-	 * @since  2.5
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @return  string  Default tag.
@@ -69,14 +69,14 @@ class WPSubtitle_Shortcode {
 	/**
 	 * Get Allowed Tags
 	 *
-	 * @since  2.5
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @return  array  Allowed HTML tags.
 	 */
 	private static function get_allowed_tags() {
 
-		return array( 'span', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+		return array( 'span', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li','strong' );
 
 	}
 
@@ -85,7 +85,7 @@ class WPSubtitle_Shortcode {
 	 *
 	 * Returns validated tag. Reverts to default if invalid.
 	 *
-	 * @since  2.5
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   string  $tag  Tag to validate.
@@ -104,7 +104,7 @@ class WPSubtitle_Shortcode {
 	/**
 	 * Format Subtitle Content
 	 *
-	 * @since  2.5
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   string  $content  Content.

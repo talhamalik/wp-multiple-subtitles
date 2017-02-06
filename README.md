@@ -5,11 +5,11 @@ Add subtitles (subheadings) to your pages, posts or custom post types.
 
 The WP Subtitle plugin allows your pages and posts to contain a subtitle.  Also called a sub-heading, this this short line of text is meant to appear beneath a post's (or page's) title, but can be inserted in your template wherever you choose.
 
-`<?php the_subtitle(); ?>` is used for inside The Loop. If you wish to get a page/post's subtitle outside The Loop, use `<?php get_the_subtitle( $post ); ?>`, where $post is a post object or ID ($post->ID).
+`<?php the_subtitle(); ?>` is used for inside The Loop. If you wish to get a page/post's subtitle outside The Loop, use `<?php get_the_subtitles( $post ); ?>`, where $post is a post object or ID ($post->ID).
 
 ### Parameters
 
-Just like WP's built-in `<?php the_title(); ?>` method, `<?php the_subtitle(); ?>` tag accepts three parameters:
+Just like WP's built-in `<?php the_title(); ?>` method, `<?php the_subtitles(); ?>` tag accepts three parameters:
 
 **$before**  
 *(string)* Text to place before the subtitle. Defaults to "".
@@ -20,7 +20,7 @@ Just like WP's built-in `<?php the_title(); ?>` method, `<?php the_subtitle(); ?
 **$echo**  
 *(boolean)* If true, display the subtitle in HTML. If false, return the subtitle for use in PHP. Defaults to true.
 
-Things are slightly different in `<?php get_the_subtitle(); ?>`:
+Things are slightly different in `<?php get_the_subtitles(); ?>`:
 
 **$post**  
 *(int|object)* Post, page or custom post type object or ID.
@@ -34,7 +34,7 @@ Things are slightly different in `<?php get_the_subtitle(); ?>`:
 **$echo**  
 *(boolean)* If true, display the subtitle in HTML. If false, return the subtitle for use in PHP. Defaults to true.
 
-For full details on the template tags and their arguments, [view the documentation here](https://github.com/benhuson/wp-subtitle/wiki).
+For full details on the template tags and their arguments, [view the documentation here in Future](https://github.com/talhamalik/wp-multiple-subtitles//wiki).
 
 By default, subtitle are supported by both posts and pages. To add support for custom post types use add_post_type_support( 'my_post_type', 'gi_wp_subtitles' ).
 
@@ -45,7 +45,7 @@ Installation
 1. Activate it from the Wordpress plugin admin screen.
 1. Edit your page and/or post template and use the `<?php the_subtitle(); ?>` template tag where you'd like the subtitle to appear.
 
-For full details on the template tags and their arguments, [view the documentation here](https://github.com/benhuson/wp-subtitle/wiki).
+For full details on the template tags and their arguments, [view the documentation here](https://github.com/talhamalik/wp-multiple-subtitles/wiki).
 
 Frequently Asked Questions
 --------------------------
@@ -75,11 +75,11 @@ add_action( 'init', 'my_wp_subtitle_page_part_support' );
 
 __Where can I get help?__  
 
-Please post support requests and questions in the [WordPress.org Support](http://wordpress.org/support/plugin/wp-subtitle) forum.
+
 
 __How should I report a bug?__  
 
-Please submit bugs/errors directly to the [GitHub Issues](https://github.com/benhuson/wp-subtitle/issues) list.
+Please submit bugs/errors directly to the [GitHub Issues](https://github.com/talhamalik/wp-multiple-subtitles//issues) list.
 
 __How can I contribute code?__  
 

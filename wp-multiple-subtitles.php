@@ -63,7 +63,7 @@ class WPSubtitle {
 	/**
 	 * Add Default Post Type Support
 	 *
-	 * @since  2.0
+	 * @since  1.0
 	 * @internal
 	 */
 	public static function _add_default_post_type_support() {
@@ -74,7 +74,7 @@ class WPSubtitle {
 	/**
 	 * Get Supported Post Types
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 *
 	 * @return  array  Array of supported post types.
 	 */
@@ -95,7 +95,7 @@ class WPSubtitle {
 	/**
 	 * Is Supported Post Type
 	 *
-	 * @since  2.3
+	 * @since  0.9
 	 *
 	 * @param   string   $post_type  Post Type.
 	 * @return  boolean
@@ -111,7 +111,7 @@ class WPSubtitle {
 	/**
 	 * Get the Subtitle
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 *
 	 * @uses  WP_Subtitle::get_subtitle()
 	 *
@@ -129,7 +129,7 @@ class WPSubtitle {
 	/**
 	 * Get Post Meta
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @uses  GI_WP_Subtitle::get_raw_subtitle()
@@ -148,7 +148,7 @@ class WPSubtitle {
 	/**
 	 * Get Post Meta Key
 	 *
-	 * @since  2.5.x
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   int     $post  Post ID.
@@ -165,7 +165,7 @@ class WPSubtitle {
 /**
  * The Subtitle
  *
- * @since  1.0
+ * @since  0.9
  *
  * @uses  GI_WP_Subtitle::get_subtitle()
  *
@@ -194,7 +194,7 @@ function the_subtitle( $before = '', $after = '', $echo = true ) {
 /**
  * Get the Subtitle
  *
- * @since  1.0
+ * @since  0.9
  *
  * @uses  GI_WP_Subtitle::get_subtitle()
  *

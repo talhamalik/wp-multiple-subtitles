@@ -1,18 +1,18 @@
 <?php
 
 /**
- * @package     WP Subtitle
+ * @package     WP Multiple Subtitles
  * @subpackage  Admin
  */
 
-add_action( 'plugins_loaded', array( 'WPSubtitle_Admin', '_setup' ) );
+add_action( 'plugins_loaded', array( 'WPMultipleSubtitles_Admin', '_setup' ) );
 
-class WPSubtitle_Admin {
+class WPMultipleSubtitles_Admin {
 
 	/**
 	 * Setup
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 */
 	public static function _setup() {
@@ -20,15 +20,15 @@ class WPSubtitle_Admin {
 		// Language
 		load_plugin_textdomain( 'wp-subtitle', false, dirname( GIWPSUBTITLES_BASENAME ) . '/languages' );
 
-		add_action( 'admin_init', array( 'WPSubtitle_Admin', '_admin_init' ) );
-		add_action( 'save_post', array( 'WPSubtitle_Admin', '_save_post' ) );
-		add_action( 'admin_enqueue_scripts', array( 'WPSubtitle_Admin', '_add_admin_scripts' ) );
+		add_action( 'admin_init', array( 'WPMultipleSubtitles_Admin', '_admin_init' ) );
+		add_action( 'save_post', array( 'WPMultipleSubtitles_Admin', '_save_post' ) );
+		add_action( 'admin_enqueue_scripts', array( 'WPMultipleSubtitles_Admin', '_add_admin_scripts' ) );
 	}
 
 	/**
 	 * Admin Init
 	 *
-	 * @since  2.3
+	 * @since  0.9
 	 * @internal
 	 */
 	public static function _admin_init() {
@@ -49,15 +49,15 @@ class WPSubtitle_Admin {
 		// Setup Field / Meta Box
 		if ( WPSubtitle::is_supported_post_type( $post_type ) ) {
 			if ( self::edit_form_after_title_supported( $post_type ) ) {
-				add_action( 'admin_head', array( 'WPSubtitle_Admin', '_add_admin_styles' ) );
-				add_action( 'edit_form_after_title', array( 'WPSubtitle_Admin', '_add_subtitle_fields' ) );
+				add_action( 'admin_head', array( 'WPMultipleSubtitles_Admin', '_add_admin_styles' ) );
+				add_action( 'edit_form_after_title', array( 'WPMultipleSubtitles_Admin', '_add_subtitle_fields' ) );
 			} else {
-				add_action( 'add_meta_boxes', array( 'WPSubtitle_Admin', '_add_meta_boxes' ) );
+				add_action( 'add_meta_boxes', array( 'WPMultipleSubtitles_Admin', '_add_meta_boxes' ) );
 			}
 
-			add_filter( 'manage_edit-' . $post_type . '_columns', array( 'WPSubtitle_Admin', 'manage_subtitle_columns' ) );
-			add_action( 'manage_' . $post_type . '_posts_custom_column', array( 'WPSubtitle_Admin', 'manage_subtitle_columns_content' ), 10, 2 );
-			add_action( 'quick_edit_custom_box', array( 'WPSubtitle_Admin', 'quick_edit_custom_box' ), 10, 2 );
+			add_filter( 'manage_edit-' . $post_type . '_columns', array( 'WPMultipleSubtitles_Admin', 'manage_subtitle_columns' ) );
+			add_action( 'manage_' . $post_type . '_posts_custom_column', array( 'WPMultipleSubtitles_Admin', 'manage_subtitle_columns_content' ), 10, 2 );
+			add_action( 'quick_edit_custom_box', array( 'WPMultipleSubtitles_Admin', 'quick_edit_custom_box' ), 10, 2 );
 		}
 
 	}
@@ -65,7 +65,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Add subtitle input to quick edit.
 	 *
-	 * @since  2.6
+	 * @since  0.9
 	 *
 	 * @uses  add_action( 'quick_edit_custom_box' )
 	 *
@@ -90,13 +90,12 @@ class WPSubtitle_Admin {
 			</div>
 		</fieldset>
 		<?php
-
 	}
 
 	/**
 	 * Add subtitle admin column.
 	 *
-	 * @since  2.4
+	 * @since  0.9
 	 *
 	 * @param   array  $columns  A columns
 	 * @return  array            Updated columns.
@@ -113,13 +112,12 @@ class WPSubtitle_Admin {
 		}
 
 		return $new_columns;
-
 	}
 
 	/**
 	 * Display subtitle column.
 	 *
-	 * @since  2.4
+	 * @since  0.9
 	 *
 	 * @param  string  $column_name  Column name.
 	 * @param  int     $post_id      Post ID
@@ -138,7 +136,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Add Admin scripts.
 	 *
-	 * @since  2.6
+	 * @since  0.9
 	 * @internal
 	 */
 	public static function _add_admin_scripts( $hook ) {
@@ -158,7 +156,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Add Admin Styles
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 */
 	public static function _add_admin_styles() {
@@ -210,7 +208,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Get Meta Box Title
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 *
 	 * @uses  apply_filters( 'wps_meta_box_title' )
 	 */
@@ -221,24 +219,24 @@ class WPSubtitle_Admin {
 	/**
 	 * Add Meta Boxes
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @uses  WPSubtitle::get_supported_post_types()
 	 * @uses  apply_filters( 'wps_meta_box_title' )
-	 * @uses  WPSubtitle_Admin::_add_subtitle_meta_box()
+	 * @uses  WPMultipleSubtitles_Admin::_add_subtitle_meta_box()
 	 */
 	public static function _add_meta_boxes() {
 		$post_types = WPSubtitle::get_supported_post_types();
 		foreach ( $post_types as $post_type ) {
-			add_meta_box( 'gi_wp_subtitles_panel',  self::get_meta_box_title( $post_type ), array( 'WPSubtitle_Admin', '_add_subtitle_meta_box' ), $post_type, 'normal', 'high' );
+			add_meta_box( 'gi_wp_subtitles_panel',  self::get_meta_box_title( $post_type ), array( 'WPMultipleSubtitles_Admin', '_add_subtitle_meta_box' ), $post_type, 'normal', 'high' );
 		}
 	}
 
 	/**
 	 * Add Subtitle Meta Box
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @uses  WPSubtitle::_get_post_meta()
@@ -264,7 +262,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Add Subtitle Field
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @uses  WPSubtitle::_get_post_meta()
@@ -306,7 +304,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Get Admin Subtitle Value
 	 *
-	 * @since  2.8
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   WP_Post  $post  Post object.
@@ -334,7 +332,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Save Subtitle
 	 *
-	 * @since  2.0
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @uses  WPSubtitle::get_supported_post_types()
@@ -383,8 +381,8 @@ class WPSubtitle_Admin {
 	/**
 	 * Verify Post Edit Capability
 	 *
-	 * @since        2.0.1
-	 * @deprecated   2.7    Use GI_WP_Subtitle->current_user_can_edit() instead.
+	 * @since        0.9
+	 * @deprecated   0.9 Beta    Use GI_WP_Subtitle->current_user_can_edit() instead.
 	 * @internal
 	 *
 	 * @param   int  $post_id  Post ID.
@@ -403,7 +401,7 @@ class WPSubtitle_Admin {
 	/**
 	 * Verify Posted Nonce
 	 *
-	 * @since  2.0.1
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   string  $nonce   Posted nonce name.
@@ -420,7 +418,7 @@ class WPSubtitle_Admin {
 	/**
 	 * edit_form_after_title Supported
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 *
 	 * @param   string  $post_type  Post type.
 	 * @return  bool

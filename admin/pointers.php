@@ -1,34 +1,34 @@
 <?php
 
 /**
- * @package     WP Subtitle
+ * @package     WP Multiple Subtitles
  * @subpackage  Pointers
  */
 
-add_action( 'admin_init', array( 'WPSubtitle_Pointers', '_setup' ) );
+add_action( 'admin_init', array( 'WPMultipleSubtitles_Pointers', '_setup' ) );
 
-class WPSubtitle_Pointers {
+class WPMultipleSubtitles_Pointers {
 
 	/**
 	 * Setup
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 */
 	public static function _setup() {
-		add_action( 'admin_enqueue_scripts', array( 'WPSubtitle_Pointers', '_pointer_load' ) );
+		add_action( 'admin_enqueue_scripts', array( 'WPMultipleSubtitles_Pointers', '_pointer_load' ) );
 
 		// Post Pointers
 		$post_types = WPSubtitle::get_supported_post_types();
 		foreach ( $post_types as $post_type ) {
-			add_filter( 'gi_wp_subtitles_admin_pointers-' . $post_type, array( 'WPSubtitle_Pointers', '_post_type_pointers' ) );
+			add_filter( 'gi_wp_subtitles_admin_pointers-' . $post_type, array( 'WPMultipleSubtitles_Pointers', '_post_type_pointers' ) );
 		}
 	}
 
 	/**
 	 * Load Pointers
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   string  $hook_suffix  Page hook.
@@ -64,7 +64,7 @@ class WPSubtitle_Pointers {
 	 *
 	 * Get pointers for the current aadmin screen.
 	 *
-	 * @since  2.4
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @return  array  Current screen pointers.
@@ -86,7 +86,7 @@ class WPSubtitle_Pointers {
 	/**
 	 * Remove Dismissed Pointers
 	 *
-	 * @since  2.4
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   array  $pointers  Pointers.
@@ -118,7 +118,7 @@ class WPSubtitle_Pointers {
 	/**
 	 * Get Dismissed Pointers
 	 *
-	 * @since  2.4
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @return  array  Dismissed pointers.
@@ -133,7 +133,7 @@ class WPSubtitle_Pointers {
 	 * Post Type Pointers.
 	 * The add pointers for multiple post types.
 	 *
-	 * @since  2.2
+	 * @since  0.9
 	 * @internal
 	 *
 	 * @param   array  $pointers  Pointers.
@@ -146,7 +146,7 @@ class WPSubtitle_Pointers {
 			'target'  => '#subtitlewrap',
 			'options' => array(
 				'content' => sprintf( '<h3>%s</h3><p>%s</p>',
-					sprintf( __( '%s Field', 'wp-subtitle' ), WPSubtitle_Admin::get_meta_box_title( get_post_type( get_queried_object_id() ) ) ),
+					sprintf( __( '%s Field', 'wp-subtitle' ), WPMultipleSubtitles_Admin::get_meta_box_title( get_post_type( get_queried_object_id() ) ) ),
 					__( 'This field has moved from a meta box to below the post title.', 'wp-subtitle' )
 				),
 				'position' => array(

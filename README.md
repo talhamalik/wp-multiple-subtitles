@@ -1,9 +1,9 @@
-WP Multiple Subtitle
+WP Multiple Subtitles
 ===========
 
 Add subtitles (subheadings) to posts or custom post types.
 
-The WP Multiple Subtitle plugin allows your pages and posts to contain subtitles.  Also called sub-headings, these are short lines of text are meant to appear beneath a post's title, but can be inserted in your template wherever you choose.
+Subtitles are effective way of attracting audience and search engines. The 'WP Multiple Subtitles' plugin helps you to have subtitles of your posts and pages. These sub-headings are shown below the title of posts in short lines in SEO friendly way. It can be activated with any of your template..
 
 `<?php the_subtitles(); ?>` is used for inside The Loop. If you wish to get a page/post's subtitle outside The Loop, use `<?php get_the_subtitles( $post ); ?>`, where $post is a post object or ID ($post->ID).
 

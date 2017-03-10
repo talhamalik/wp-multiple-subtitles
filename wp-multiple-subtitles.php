@@ -3,7 +3,7 @@
 /*
 Plugin Name: WP Multiple Subtitles
 Plugin URI: http://github.org/talhamalik/wp-multiple-subtitles/
-Description: Adds a subtitle fields to pages and posts. Possible to add support for custom post types to make your website more SEO friendly.
+Description: Adds subtitle fields to pages and posts. These sub-headings are shown below the title of posts in short lines to attract audience and search engines.
 Version: 0.9.2
 Author: Talha Malik
 Author URI: http://talhamalik.com/
